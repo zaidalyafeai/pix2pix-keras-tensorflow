@@ -26,7 +26,7 @@ class Dataset(object):
     def __init__(self, dataset, is_test=False, batch_size=4, crop_width=256, thread_num=1):
         self.batch_size = batch_size
         self.thread_num = thread_num
-        print "Batch size: %d, Thread num: %d" % (batch_size, thread_num)
+        print ("Batch size: %d, Thread num: %d" % (batch_size, thread_num))
         datasetDir = './datasets/{}'.format(dataset)
         if not os.path.isdir(datasetDir):
             download(dataset)
@@ -41,8 +41,8 @@ class Dataset(object):
             img, label = load_image(self.dataDir + '/%d.jpg' % i)
 
             self.dataset.append((img, label))
-        print "load dataset done"
-        print 'data size: %d' % len(self.dataset)
+        print ("load dataset done")
+        print ('data size: %d' % len(self.dataset))
         self.img_shape = list(self.dataset[0][0].shape)
         self.label_shape = list(self.dataset[0][1].shape)
         self.fine_size = self.img_shape[0]
