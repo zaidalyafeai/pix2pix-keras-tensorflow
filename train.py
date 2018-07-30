@@ -97,7 +97,7 @@ saver = tf.train.Saver()
 mkdir('./model')
 # # Training 
 
-print 'start training'
+print ('start training')
 widgets = ['Train: ', Percentage(), '(', SimpleProgress(), ') ',Bar(marker='#', left='[', right=']'), ' ', ETA()]
 
 for i in range(nb_epochs):
@@ -118,7 +118,7 @@ for i in range(nb_epochs):
         pbar.update(j)
     pbar.finish()
 
-    print "Epoch %d/%d - dis_loss: %g - gen_loss: %g" % (i+1, nb_epochs, np.mean(ave_d), np.mean(ave_g))
+    print ("Epoch %d/%d - dis_loss: %g - gen_loss: %g" % (i+1, nb_epochs, np.mean(ave_d), np.mean(ave_g)))
     generated_image = sess.run(generated_img, feed_dict={tmp_x: [test_label], K.learning_phase(): 1})
     save_image(generated_image[0], args.out + '/' + args.dataset , i+1)
     saver.save(sess, './model/{}/model.ckpt'.format(args.dataset), global_step=i+1)
